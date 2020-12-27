@@ -1,27 +1,20 @@
 package com.tedbj.grace.file.controller.api;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
-
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.tedbj.grace.basic.annotation.ApiType;
 import com.tedbj.grace.basic.constant.ApiTypeConstant;
 import com.tedbj.grace.file.api.IFileApi;
 import com.tedbj.grace.file.service.IFileConvertService;
 import com.tedbj.grace.file.vo.FileResult;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * 文件记录表前端控制器
@@ -47,8 +40,7 @@ public class FileApiTestController {
      * 文件上传
      *
      * @param tenantCode 租户编码
-     * @param file 文件
-     *
+     * @param file       文件
      * @return 结果
      */
     @PostMapping("/upload")
@@ -63,7 +55,7 @@ public class FileApiTestController {
     /**
      * 下载文件
      *
-     * @param fileId 文件ID
+     * @param fileId   文件ID
      * @param response 响应
      */
     @GetMapping("/download")
@@ -78,7 +70,6 @@ public class FileApiTestController {
      * 删除文件
      *
      * @param fileId 文件ID
-     *
      * @return FileResult 操作结果
      */
     @GetMapping("/delete")
@@ -93,8 +84,7 @@ public class FileApiTestController {
      * 更新文件
      *
      * @param fileId 文件ID
-     * @param file 文件
-     *
+     * @param file   文件
      * @return FileResult 操作结果
      */
     @PostMapping("/update")
@@ -108,7 +98,7 @@ public class FileApiTestController {
     /**
      * 预览文件
      *
-     * @param fileId 文件ID
+     * @param fileId   文件ID
      * @param response 响应
      */
     @GetMapping("/preview")
@@ -119,6 +109,18 @@ public class FileApiTestController {
         fileApi.preview(fileId, response, request);
     }
 
+    /**
+     * 测试
+     *
+     * @param param 参数
+     */
+    @GetMapping("/test")
+    @ApiType(ApiTypeConstant.API)
+    @ApiOperation(value = "测试", notes = "测试")
+    @ApiOperationSupport(order = 60)
+    String test(@RequestParam("param") String param) {
+        return "您传入的参数为：" + param;
+    }
     //pdf加水印
 
     //图片压缩

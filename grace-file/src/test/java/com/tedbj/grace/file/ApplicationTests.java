@@ -28,6 +28,7 @@ class ApplicationTests {
     @Resource
     IFileConvertService fileConvertService;
 
+
     /**
      * 判断结果是否为空
      */
@@ -54,5 +55,7 @@ class ApplicationTests {
         GrcFileInfo grcFileInfo = service.getOne(new LambdaQueryWrapper<GrcFileInfo>().eq(GrcFileInfo::getFileId, "ZUIC3STR6I7UYV1E8W06"));
         fileConvertService.officeToPdfAsync(grcFileInfo);
     }
+
+
 
 }
