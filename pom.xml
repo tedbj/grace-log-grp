@@ -18,6 +18,7 @@
     <dependencies>
 
     </dependencies>
+    <!--测试-->
     <!--maven-sonar依赖包-->
     <build>
         <plugins>
